@@ -15,7 +15,8 @@ namespace book_service.Controllers
             _logger = logger;
         }
 
-        [HttpPost(Name = "AddBook")]
+        [HttpPost]
+        [Route("AddBook")]
         public void AddBook(Book book)
         {
 
@@ -29,14 +30,29 @@ namespace book_service.Controllers
             _bookContext.SaveChanges();
         }
 
-        [HttpGet(Name = "GetBooks")]
+        
+        [HttpGet]
+        [Route("GetBooks")]
         public IEnumerable<BookEntity> GetBooks()
         {
             return (IEnumerable<BookEntity>)_bookContext.Books.OrderBy(b => b.BookEntityId);
 
         }
 
-        [HttpPut(Name = "UpdateBook")]
+        [HttpGet]
+        [Route("GetBooksByTitleOrAuthor")]
+        public IEnumerable<BookEntity> GetBooksByTitleOrAuthor(string? title, string? author)
+        {
+
+
+            var books = _bookContext.Books.Where(b => b.Title.Contains(title) || b.Title.Contains(author));
+
+            return books;
+
+        }
+        
+        [HttpPut]
+        [Route("UpdateBook")]
         public void UpdateBook(int bookId, string? title, string? author, int? publicationYear, string? isbn)
         {
             var book = _bookContext.Books.Find(bookId);
@@ -50,7 +66,8 @@ namespace book_service.Controllers
             }
         }
 
-        [HttpDelete(Name = "DeleteBook")]
+        [HttpDelete]
+        [Route("DeleteBook")]
         public void DeleteBook(int bookId)
         {
             var book = _bookContext.Books.Find(bookId);
