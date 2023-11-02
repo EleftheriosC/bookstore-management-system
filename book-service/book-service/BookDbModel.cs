@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class BookContext : DbContext
 {
-    public DbSet<Book> Books { get; set; }
+    public DbSet<BookEntity> Books { get; set; }
 
     public string DbPath { get; }
 
@@ -12,7 +12,7 @@ public class BookContext : DbContext
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
         var path = Environment.GetFolderPath(folder);
-        DbPath = System.IO.Path.Join(path, "book.db");
+        DbPath = System.IO.Path.Join(path, "books.db");
     }
 
     // The following configures EF to create a Sqlite database file in the
@@ -21,9 +21,9 @@ public class BookContext : DbContext
         => options.UseSqlite($"Data Source={DbPath}");
 }
 
-public class Book
+public class BookEntity
 {
-    public int BookId { get; set; }
+    public int BookEntityId { get; set; }
     public string Title { get; set; }
     public string Author { get; set; }
 

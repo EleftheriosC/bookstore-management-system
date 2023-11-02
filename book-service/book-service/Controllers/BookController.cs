@@ -6,12 +6,9 @@ namespace book_service.Controllers
     [Route("[controller]")]
     public class BookController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
         private readonly ILogger<BookController> _logger;
+        private readonly BookContext _bookContext = new BookContext();
 
         public BookController(ILogger<BookController> logger)
         {
@@ -19,58 +16,48 @@ namespace book_service.Controllers
         }
 
         [HttpPost(Name = "AddBook")]
-        public void AddBook()
+        public void AddBook(Book book)
         {
-            /*
-                return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-            */
+
+            _bookContext.Add(new BookEntity
+           {
+               Title = book.Title,
+               Author = book.Author,
+               PublicationYear = book.PublicationYear,
+               ISBN = book.ISBN
+           });
+            _bookContext.SaveChanges();
         }
 
         [HttpGet(Name = "GetBooks")]
-        public IEnumerable<Book> GetBooks()
+        public IEnumerable<BookEntity> GetBooks()
         {
-
-            var books = new List<Book>();
-
-            var book = new Book("Star Wars", "George", 1975, "324fd9");
-
-            books.Add(book);
-            return books;
+            return (IEnumerable<BookEntity>)_bookContext.Books.OrderBy(b => b.BookEntityId);
 
         }
 
         [HttpPut(Name = "UpdateBook")]
-        public void UpdateBook()
+        public void UpdateBook(int bookId, string? title, string? author, int? publicationYear, string? isbn)
         {
-            /*
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var book = _bookContext.Books.Find(bookId);
+            if (book is not null)
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-            */
+                book.Title = title is not null ? title : book.Title;
+                book.Author = author is not null ? author : book.Author;
+                book.PublicationYear = (int)(publicationYear is not null ? publicationYear : book.PublicationYear);
+                book.ISBN = isbn is not null ? isbn : book.ISBN;
+                _bookContext.SaveChanges();
+            }
         }
 
         [HttpDelete(Name = "DeleteBook")]
-        public void DeleteBook()
+        public void DeleteBook(int bookId)
         {
-            /*
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-            */
+            var book = _bookContext.Books.Find(bookId);
+            if ( book is not null) {
+                _bookContext.Remove(book);
+                _bookContext.SaveChanges();
+            }
         }
     }
 }

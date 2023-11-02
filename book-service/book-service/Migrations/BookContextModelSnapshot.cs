@@ -15,9 +15,9 @@ namespace book_service.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
 
-            modelBuilder.Entity("Book", b =>
+            modelBuilder.Entity("BookEntity", b =>
                 {
-                    b.Property<int>("BookId")
+                    b.Property<int>("BookEntityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -36,7 +36,7 @@ namespace book_service.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("BookId");
+                    b.HasKey("BookEntityId");
 
                     b.ToTable("Books");
                 });
