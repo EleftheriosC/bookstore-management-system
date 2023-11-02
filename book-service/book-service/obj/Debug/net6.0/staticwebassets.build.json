@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "sybL+k8iZL61TBGCBIWrhCsV71g7rpKy1tplL2IHENY=",
+  "Source": "book-service",
+  "BasePath": "_content/book-service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
