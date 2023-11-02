@@ -45,7 +45,7 @@ namespace book_service.Controllers
         {
 
 
-            var books = _bookContext.Books.Where(b => b.Title.Contains(title) || b.Title.Contains(author));
+            var books = _bookContext.Books.Where(b => b.Title.Contains(title) || b.Author.Contains(author));
 
             return books;
 
