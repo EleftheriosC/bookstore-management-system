@@ -2,7 +2,7 @@ import {Box, Button, Grid, Input, TextField, Typography} from "@mui/material";
 import {red} from "@mui/material/colors";
 import logo from '../logo.svg';
 
-function WelcomePage() {
+function Welcome() {
   return (
       <>
           <header className="App-header">
@@ -21,4 +21,4 @@ function WelcomePage() {
   );
 }
 
-export default WelcomePage;
+export default Welcome;

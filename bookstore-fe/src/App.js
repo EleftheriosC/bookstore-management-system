@@ -1,21 +1,19 @@
 import './App.css';
 import Login from "./components/Login";
 import {Box, Grid} from "@mui/material";
-import WelcomePage from "./components/WelcomePage";
+import Welcome from "./components/Welcome";
+import {Route, Routes} from "react-router-dom";
+import Home from "./pages/Home";
+import Bookstore from "./pages/Bookstore";
 
 function App() {
   return (
-    <main className={"App"}>
-        <Grid container>
-            <Grid item xs={6}>
-                <WelcomePage/>
-            </Grid>
-            <Grid item xs={6}>
-                <Login/>
-            </Grid>
-
-        </Grid>
-    </main>
+      <div className={"App"}>
+          <Routes>
+              <Route path="/" element={<Home/>}/>
+              <Route path="/bookstore" element={<Bookstore/>}/>
+          </Routes>
+      </div>
   );
 }
 
