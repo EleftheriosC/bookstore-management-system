@@ -7,3 +7,4 @@ book-service/.vs/book-service/FileContentIndex/ad99c649-b31a-4a12-b76d-1605d83e1
 *.vsidx
 *.dll
 book-service/book-service/bin/Debug/net6.0/book-service.dll
+book-service/.vs/book-service/v17/.suo
