@@ -1,7 +1,13 @@
 import {Box, Button, Grid, Input, TextField, Typography} from "@mui/material";
 import {red} from "@mui/material/colors";
+import {Link, useNavigate} from 'react-router-dom';
 
 function Login() {
+
+    const navigate = useNavigate();
+    function handleClick(event){
+        navigate('/bookstore');
+    }
   return (
       <>
           <header className="Login-header">
@@ -38,6 +44,13 @@ function Login() {
                   <Button>
                       Register
                   </Button>
+              </Grid>
+
+              <Grid item xs={12}>
+                  {/*<Button type={'button'} onSubmit={handleClick}>*/}
+                  {/*    Go to Bookstore*/}
+                  {/*</Button>*/}
+                  <Link to={"/bookstore"}>Go to Bookstore</Link>
               </Grid>
           </Grid>
           </header>
