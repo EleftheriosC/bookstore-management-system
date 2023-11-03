@@ -5,3 +5,4 @@ book-service/.vs/ProjectEvaluation/book-service.metadata.v2
 book-service/.vs/ProjectEvaluation/book-service.projects.v2
 book-service/.vs/book-service/FileContentIndex/ad99c649-b31a-4a12-b76d-1605d83e1c46.vsidx
 *.vsidx
+*.dll
