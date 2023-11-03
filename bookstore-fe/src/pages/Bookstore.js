@@ -5,12 +5,28 @@ import Welcome from "../components/Welcome";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import api from '../api/books';
+import {DataGrid} from "@mui/x-data-grid";
 
 function Bookstore() {
 
     const [books, setBooks] = useState([]);
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+
+    const columns = [
+        { field: 'bookEntityId', headerName: 'ID', width: 90},
+        { field: 'title', headerName: 'Title', width: 140},
+        { field: 'author', headerName: 'Author', width: 140},
+        { field: 'publicationYear', headerName: 'Publication Year', width: 90},
+        { field: 'isbn', headerName: 'ISBN', width: 140}
+    ];
+
+    const rows = Object.keys(books)
+        .map( bookEntityId =>
+            ({
+                bookEntityId: bookEntityId
+            })
+        )
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -35,7 +51,6 @@ function Bookstore() {
     }, []);
 
     const booksArray = books.map( book =>
-
         <li key={book.bookEntityId}>
             <Typography variant={"h5"} color={'black'}>
                 Title
@@ -61,7 +76,7 @@ function Bookstore() {
             <p>
                 {book.isbn}
             </p>
-        </li>)
+        </li>);
 
 
   return (
@@ -72,25 +87,34 @@ function Bookstore() {
                     Book List
                 </Typography>
             </Grid>
-            {/*<Grid item xs={12}>*/}
-            {/*    Update*/}
-            {/*</Grid>*/}
-            {/*<Grid item xs={12}>*/}
-            {/*    Delete*/}
-            {/*</Grid>*/}
-            {/*<Grid item xs={12}>*/}
-            {/*    Search*/}
-            {/*</Grid>*/}
 
-            <Grid item xs={6}>
-                <ul>
+
+            <Grid item xs={12} mt={10} mb={10}>
+                <li>
                     Actions
-                </ul>
+                </li>
             </Grid>
 
-            <Grid item xs={6}>
-                    {booksArray}
+
+            <Grid item xs={12}>
+                <DataGrid
+                    getRowId={(row => row.bookEntityId)}
+                    columns={columns}
+                    rows={books}
+                    initialState={{
+                        pagination: {
+                            paginationModel: {
+                                pageSize: 5,
+                            },
+                    },
+                }}
+                    pageSizeOptions={[5]}
+                    checkboxSelection
+                    disableRowSelectionOnClick
+                />
+
             </Grid>
+
 
 
             <Grid item xs={12}>
