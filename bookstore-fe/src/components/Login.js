@@ -4,10 +4,12 @@ import {red} from "@mui/material/colors";
 function Login() {
   return (
       <>
+          <header className="Login-header">
+
           <Grid container>
 
               <Grid item xs={12} >
-                  <Typography variant={"h5"}>
+                  <Typography variant={"h5"} color={'black'}>
                       Log In
                   </Typography>
               </Grid>
@@ -26,7 +28,7 @@ function Login() {
               </Grid>
 
               <Grid item xs={12}>
-                  <Typography variant={"h6"}>
+                  <Typography variant={"h6"} color={'black'}>
                   No Account?
                   </Typography>
               </Grid>
@@ -37,8 +39,8 @@ function Login() {
                       Register
                   </Button>
               </Grid>
-
           </Grid>
+          </header>
       </>
   );
 }
