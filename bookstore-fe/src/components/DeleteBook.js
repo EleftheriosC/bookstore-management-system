@@ -11,12 +11,10 @@ function DeleteBook() {
     const navigate = useNavigate();
 
     const removeBook = async (bookId) => {
-        console.log('Delete Book Clicked');
         if (bookId !== null && bookId.length >0)
         {
             try {
-                console.log('Attempting delete book call');
-               let response = await api.delete(`/Book/DeleteBook/${bookId}`);
+               let response = await api.delete(`/Book/${bookId}`);
                 setBookId("");
                 navigate(0);
             } catch (err) {
@@ -46,7 +44,7 @@ function DeleteBook() {
                 <Grid item xs={2} mb={5}>
                     <TextField
                         required
-                        id="bookId"
+                        id="deleteBookId"
                         label="Book ID"
                         onChange={(e) => {
                             setBookId(e.target.value)

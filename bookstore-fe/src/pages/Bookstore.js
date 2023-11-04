@@ -9,6 +9,7 @@ import {DataGrid} from "@mui/x-data-grid";
 import BookTable from "../components/BookTable";
 import AddBook from "../components/AddBook";
 import DeleteBook from "../components/DeleteBook";
+import UpdateBook from "../components/UpdateBook";
 
 function Bookstore() {
   return (
@@ -20,6 +21,8 @@ function Bookstore() {
             </Grid>
 
             <AddBook/>
+
+            <UpdateBook/>
 
             <DeleteBook/>
 

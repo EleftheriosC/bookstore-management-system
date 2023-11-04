@@ -10,7 +10,7 @@ function BookTable() {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await api.get('/Book/GetBooks');
+                const response = await api.get('/Book');
                 if (response && response.data){
                     setBooks(response.data);
                 }

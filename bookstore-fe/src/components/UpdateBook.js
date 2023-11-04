@@ -3,37 +3,42 @@ import {useEffect, useState} from "react";
 import api from "../api/books";
 import {useNavigate} from "react-router-dom";
 
-function AddBook() {
+function UpdateBook() {
 
-    const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false)
+    const [bookId, setBookId] = useState("");
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [publicationYear, setPublicationYear] = useState(0);
     const [isbn, setIsbn] = useState("");
     const navigate = useNavigate();
 
-    const createBook = async (title, author, publicationYear, isbn) => {
+    const updateBook = async (bookId, title, author, publicationYear, isbn) => {
+        console.log('Update Book Clicked');
 
         const validTitle = title !== null && title.length >0;
         const validAuthor = author !== null && author.length >0;
         const validPublicationYear = publicationYear !== null && publicationYear.length >0;
         const validISBN =isbn !== null  && isbn.length >0;
 
+        console.log(publicationYear)
         if ((validTitle)
-            && (validAuthor)
-            && (validPublicationYear)
-            && (validISBN))
+            || (validAuthor)
+            || (validPublicationYear)
+            || (validISBN)
+            && (bookId !== null && bookId.length >0))
         {
-            const newBook = {
-                title: title,
-                author: author,
-                publicationYear: parseInt(publicationYear),
-                isbn: isbn
+            const updatedBook = {
+                title: validTitle ? title : null,
+                author: validAuthor ? author : null,
+                publicationYear: validPublicationYear ? parseInt(publicationYear) : -1,
+                isbn: validISBN ? isbn : null
             };
+            console.log('Add Book Conditions met');
 
             try {
-                let response = await api.post('/Book', newBook);
+                console.log('Attempting crate book call');
+                let response = await api.put(`/Book/${bookId}`, updatedBook);
                 navigate(0);
                 return response;
             } catch (err) {
@@ -48,22 +53,33 @@ function AddBook() {
                 <Grid item xs={2} mb={5}>
                     <button
                         type="submit"
-                        id="addBookBtn"
-                        onClick={() => createBook(title,author,publicationYear,isbn)}
+                        id="updateBookBtn"
+                        onClick={() => updateBook(bookId,title,author,publicationYear,isbn)}
                         // disabled={loading}
                         // onSubmit={ (e) => {
                         //     addBook(title,author,publicationYear,isbn)
                         // }}
                     >
-                        Add Book
+                        Update Book
                     </button>
                 </Grid>
-
 
                 <Grid item xs={2} mb={5}>
                     <TextField
                         required
-                        id="addBookTitle"
+                        id="updateBookId"
+                        label="Book ID"
+                        onChange={(e) => {
+                            setBookId(e.target.value)
+                        }}
+                        value={bookId}
+                    />
+                </Grid>
+
+                <Grid item xs={2} mb={5}>
+                    <TextField
+                        required
+                        id="updateBookTitle"
                         label="Title"
                         onChange={(e) => {
                             setTitle(e.target.value)
@@ -75,7 +91,7 @@ function AddBook() {
 
                     <TextField
                         required
-                        id="addBookAuthor"
+                        id="updateBookAuthor"
                         label="Author"
                         onChange={(e) => {
                             setAuthor(e.target.value)
@@ -87,7 +103,7 @@ function AddBook() {
 
                     <TextField
                         required
-                        id="addBookPublicationYear"
+                        id="updateBookPublicationYear"
                         label="Publication Year"
                         onChange={(e) => {
                             setPublicationYear(e.target.value)
@@ -99,7 +115,7 @@ function AddBook() {
 
                     <TextField
                         required
-                        id="addBookISBN"
+                        id="updateBookISBN"
                         label="ISBN"
                         onChange={(e) => {
                             setIsbn(e.target.value)
@@ -112,4 +128,4 @@ function AddBook() {
     );
 }
 
-export default AddBook;
+export default UpdateBook;
