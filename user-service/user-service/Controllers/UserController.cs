@@ -16,9 +16,17 @@ namespace user_service.Controllers
         }
 
         [HttpPost]
-        [Route("RegisterUser")]
+        [Route("")]
         public void RegisterUser(User user)
         {
+
+            var userExists = _userContext.Users
+                .Where(u => u.Email.Equals(user.Email) || u.Username.Equals(user.Username)).Count() > 0;
+
+            if (userExists)
+            {
+                return;
+            }
 
             _userContext.Add(new UserEntity
             {
@@ -27,6 +35,17 @@ namespace user_service.Controllers
                 Password = user.Password
             });
             _userContext.SaveChanges();
+        }
+
+        [HttpGet]
+        [Route("")]
+        public IEnumerable<UserEntity> GetUserByUsernameOrEmail(string? email, string? username)
+        {
+            var user = _userContext.Users
+                .Where(u => u.Email.Equals(email) || u.Username.Equals(username));
+
+            return user;
+
         }
     }
 }
