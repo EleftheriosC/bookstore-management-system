@@ -16,7 +16,7 @@ namespace book_service.Controllers
         }
 
         [HttpPost]
-        [Route("AddBook")]
+        [Route("")]
         public void AddBook(Book book)
         {
 
@@ -32,7 +32,7 @@ namespace book_service.Controllers
 
         
         [HttpGet]
-        [Route("GetBooks")]
+        [Route("")]
         public IEnumerable<BookEntity> GetBooks()
         {
             return (IEnumerable<BookEntity>)_bookContext.Books.OrderBy(b => b.BookEntityId);
@@ -43,31 +43,33 @@ namespace book_service.Controllers
         [Route("GetBooksByTitleOrAuthor")]
         public IEnumerable<BookEntity> GetBooksByTitleOrAuthor(string? title, string? author)
         {
-
-
-            var books = _bookContext.Books.Where(b => b.Title.Contains(title) || b.Author.Contains(author));
+            //Make case invariant
+            //Fix slection issue
+            var books = _bookContext.Books
+                .Where(b => b.Title.Contains(title))
+                .Where(b => b.Author.Contains(author));
 
             return books;
 
         }
         
         [HttpPut]
-        [Route("UpdateBook")]
-        public void UpdateBook(int bookId, string? title, string? author, int? publicationYear, string? isbn)
+        [Route("{bookId}")]
+        public void UpdateBook(int bookId, [FromBody] Book updatedBook)
         {
             var book = _bookContext.Books.Find(bookId);
             if (book is not null)
             {
-                book.Title = title is not null ? title : book.Title;
-                book.Author = author is not null ? author : book.Author;
-                book.PublicationYear = (int)(publicationYear is not null ? publicationYear : book.PublicationYear);
-                book.ISBN = isbn is not null ? isbn : book.ISBN;
+                book.Title = updatedBook.Title is not null ? updatedBook.Title : book.Title;
+                book.Author = updatedBook.Author is not null ? updatedBook.Author : book.Author;
+                book.PublicationYear = (int)(updatedBook.PublicationYear > 0 ? updatedBook.PublicationYear : book.PublicationYear);
+                book.ISBN = updatedBook.ISBN is not null ? updatedBook.ISBN : book.ISBN;
                 _bookContext.SaveChanges();
             }
         }
 
         [HttpDelete]
-        [Route("DeleteBook/{bookId}")]
+        [Route("{bookId}")]
         public void DeleteBook(int bookId)
         {
             var book = _bookContext.Books.Find(bookId);

@@ -41,9 +41,7 @@ function Login() {
 
 
               <Grid item xs={12}>
-                  <Button>
-                      Register
-                  </Button>
+                  <Link to={"/register"}>Register</Link>
               </Grid>
 
               <Grid item xs={12}>

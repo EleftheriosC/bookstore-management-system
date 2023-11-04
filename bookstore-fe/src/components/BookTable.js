@@ -3,7 +3,6 @@ import {DataGrid} from "@mui/x-data-grid";
 import {useEffect, useState} from "react";
 import api from "../api/books";
 
-
 function BookTable() {
 
     const [books, setBooks] = useState([]);
@@ -11,7 +10,7 @@ function BookTable() {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await api.get('/Book/GetBooks');
+                const response = await api.get('/Book');
                 if (response && response.data){
                     setBooks(response.data);
                 }

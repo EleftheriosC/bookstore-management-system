@@ -3,18 +3,22 @@ import {useEffect, useState} from "react";
 import api from "../api/books";
 import {useNavigate} from 'react-router-dom';
 
-function DeleteBook() {
+function SearchBook() {
 
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false)
     const [bookId, setBookId] = useState("");
+    const [title, setTitle] = useState("");
+    const [author, setAuthor] = useState("");
     const navigate = useNavigate();
 
-    const removeBook = async (bookId) => {
+    const findBook = async (title, author) => {
+        console.log('Find Book Clicked');
         if (bookId !== null && bookId.length >0)
         {
             try {
-               let response = await api.delete(`/Book/${bookId}`);
+                console.log('Attempting delete book call');
+               let response = await api.get('/Book/GetBooksByTitleOrAuthor');
                 setBookId("");
                 navigate(0);
             } catch (err) {
@@ -30,7 +34,7 @@ function DeleteBook() {
                     <button
                         type="submit"
                         id="deleteBookBtn"
-                        onClick={() => removeBook(bookId)}
+                        onClick={() => findBook(bookId)}
                         // disabled={loading}
                         // onSubmit={ (e) => {
                         //     addBook(title,author,publicationYear,isbn)
@@ -43,9 +47,19 @@ function DeleteBook() {
 
                 <Grid item xs={2} mb={5}>
                     <TextField
-                        required
-                        id="deleteBookId"
-                        label="Book ID"
+                        id="bookTitleSearch"
+                        label="Search By Title"
+                        onChange={(e) => {
+                            setBookId(e.target.value)
+                        }}
+                        value={bookId}
+                    />
+                </Grid>
+
+                <Grid item xs={2} mb={5}>
+                    <TextField
+                        id="bookAuthorSearch"
+                        label="Search By Author"
                         onChange={(e) => {
                             setBookId(e.target.value)
                         }}
@@ -59,4 +73,4 @@ function DeleteBook() {
     );
 }
 
-export default DeleteBook;
+export default SearchBook;
