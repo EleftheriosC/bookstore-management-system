@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "J2/k+yVdmNmtBGxl9Jw+IQdtPlNH+kv2gxC9SUwmOQ63Nbps6Mk5E5A9ueh+X2iOzJaoSl7eHYzG3cDkIhQeRQ==",
+  "dgSpecHash": "8InwQ7MimgvxlUojuY/pBKQXd2vhnWPjbYKM5U1aRL/6hn9ApG5eCleOUwmfXTeSoFbzwcBJsXTHaLg2EziQVA==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\book-service\\book-service\\book-service.csproj",
   "expectedPackageFiles": [
@@ -27,6 +27,9 @@
     "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\nlog\\5.2.5\\nlog.5.2.5.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\nlog.extensions.logging\\5.3.5\\nlog.extensions.logging.5.3.5.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\nlog.web.aspnetcore\\5.3.5\\nlog.web.aspnetcore.5.3.5.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.4\\sqlitepclraw.bundle_e_sqlite3.2.1.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\sqlitepclraw.core\\2.1.4\\sqlitepclraw.core.2.1.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.4\\sqlitepclraw.lib.e_sqlite3.2.1.4.nupkg.sha512",
