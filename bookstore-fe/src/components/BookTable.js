@@ -3,7 +3,6 @@ import {DataGrid} from "@mui/x-data-grid";
 import {useEffect, useState} from "react";
 import api from "../api/books";
 
-
 function BookTable() {
 
     const [books, setBooks] = useState([]);
