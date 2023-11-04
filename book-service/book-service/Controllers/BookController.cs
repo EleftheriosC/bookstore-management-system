@@ -67,7 +67,7 @@ namespace book_service.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteBook")]
+        [Route("DeleteBook/{bookId}")]
         public void DeleteBook(int bookId)
         {
             var book = _bookContext.Books.Find(bookId);
