@@ -1,11 +1,13 @@
 import '../App.css';
 import Login from "../components/Login";
-import {Box, Button, Grid, Typography} from "@mui/material";
+import {Box, Button, Grid, TextField, Typography} from "@mui/material";
 import Welcome from "../components/Welcome";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import api from '../api/books';
 import {DataGrid} from "@mui/x-data-grid";
+import BookTable from "../components/BookTable";
+import AddBook from "../components/AddBook";
 
 function Bookstore() {
 
@@ -82,42 +84,16 @@ function Bookstore() {
   return (
     <main className={"App"}>
         <Grid container>
-            <Grid item xs={12}>
-                <Typography variant={"h4"} color={'black'}>
-                    Book List
-                </Typography>
-            </Grid>
-
 
             <Grid item xs={12} mt={10} mb={10}>
-                <li>
-                    Actions
-                </li>
+                <Typography variant={"h2"}>Book Management System</Typography>
             </Grid>
 
+            <AddBook/>
 
-            <Grid item xs={12}>
-                <DataGrid
-                    getRowId={(row => row.bookEntityId)}
-                    columns={columns}
-                    rows={books}
-                    initialState={{
-                        pagination: {
-                            paginationModel: {
-                                pageSize: 5,
-                            },
-                    },
-                }}
-                    pageSizeOptions={[5]}
-                    checkboxSelection
-                    disableRowSelectionOnClick
-                />
+            <BookTable/>
 
-            </Grid>
-
-
-
-            <Grid item xs={12}>
+            <Grid item xs={12} mt={10}>
                 <Link to={"/"}>Go to Homepage</Link>
             </Grid>
         </Grid>
