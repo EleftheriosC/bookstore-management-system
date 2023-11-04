@@ -1,6 +1,7 @@
 import {Button, Grid, TextField, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
 import api from "../api/books";
+import {useNavigate} from "react-router-dom";
 
 function AddBook() {
 
@@ -10,6 +11,7 @@ function AddBook() {
     const [author, setAuthor] = useState("");
     const [publicationYear, setPublicationYear] = useState(0);
     const [isbn, setIsbn] = useState("");
+    const navigate = useNavigate();
 
     const createBook = async (title, author, publicationYear, isbn) => {
         console.log('Add Book Clicked');
@@ -25,13 +27,8 @@ function AddBook() {
                 isbn: isbn
             };
             try {
-                console.log('Attempting call');
-
-                setLoading(true)
-
+                console.log('Attempting crate book call');
                 let response = await api.post('/Book/AddBook', newBook);
-                setLoading(false)
-
                 return response;
             } catch (err) {
                 console.log(`Error: &{err.message}`);

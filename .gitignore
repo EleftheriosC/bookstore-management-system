@@ -13,3 +13,9 @@ book-service/.vs/book-service/v17/.suo
 *.vsidx
 *.v2
 *.v2
+*.dll
+*.dll
+book-service/book-service/obj/Debug/net6.0/book-service.dll
+book-service/.vs/book-service/v17/.suo
+book-service/book-service/bin/Debug/net6.0/book-service.dll
+*.pdb
