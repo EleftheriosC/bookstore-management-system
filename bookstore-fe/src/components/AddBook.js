@@ -15,6 +15,19 @@ function AddBook() {
 
     const createBook = async (title, author, publicationYear, isbn) => {
         console.log('Add Book Clicked');
+
+        const validTitle = title !== null && title.length >0;
+        const validAuthor = author !== null && author.length >0;
+        const validPublicationYear = publicationYear !== null && publicationYear.length >0;
+        const validISBN =isbn !== null  && isbn.length >0;
+
+        console.log("validTitle", validTitle);
+        console.log("validAuthor", validAuthor);
+        console.log("validPublicationYear", validPublicationYear);
+        console.log("validISBN", validISBN);
+
+
+        console.log()
         if ((title !== null && title.length >0)
             && (author !== null && author.length >0)
             && (publicationYear !== null && publicationYear.length >0)
@@ -26,9 +39,12 @@ function AddBook() {
                 publicationYear: parseInt(publicationYear),
                 isbn: isbn
             };
+            console.log('Add Book Conditions met');
+
             try {
                 console.log('Attempting crate book call');
                 let response = await api.post('/Book/AddBook', newBook);
+                navigate(0);
                 return response;
             } catch (err) {
                 console.log(`Error: &{err.message}`);
@@ -83,7 +99,7 @@ function AddBook() {
                         required
                         id="bookPublicationYear"
                         label="Publication Year"
-                        on={(e) => {
+                        onChange={(e) => {
                             setPublicationYear(e.target.value)
                         }}
                     />
