@@ -1,3 +1,4 @@
+using book_service.Services;
 using NLog;
 using NLog.Web;
 
@@ -25,7 +26,7 @@ try
 
 
     // Add services to the container.
-
+    builder.Services.AddScoped<IBookService, BookService>();
     builder.Services.AddControllers();
 
     // NLog: Setup NLog for Dependency injection
