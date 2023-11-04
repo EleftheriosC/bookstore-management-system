@@ -28,8 +28,8 @@ function Bookstore() {
 
             <BookTable/>
 
-            <Grid item xs={12} mt={10}>
-                <Link to={"/"}>Go to Homepage</Link>
+            <Grid item xs={12} mt={5}>
+                <Link to={"/"}>Sign Out</Link>
             </Grid>
         </Grid>
     </main>

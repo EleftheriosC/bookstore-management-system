@@ -39,13 +39,11 @@ namespace user_service.Controllers
 
         [HttpGet]
         [Route("")]
-        public IEnumerable<UserEntity> GetUserByUsernameOrEmail(string? email, string? username)
+        public IEnumerable<UserEntity> Login(string emailOrUsername, string password)
         {
             var user = _userContext.Users
-                .Where(u => u.Email.Equals(email) || u.Username.Equals(username));
-
+                .Where(u => u.Email.Equals(emailOrUsername) || u.Username.Equals(emailOrUsername));
             return user;
-
         }
     }
 }

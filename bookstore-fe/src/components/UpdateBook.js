@@ -78,7 +78,6 @@ function UpdateBook() {
 
                 <Grid item xs={2} mb={5}>
                     <TextField
-                        required
                         id="updateBookTitle"
                         label="Title"
                         onChange={(e) => {
@@ -90,7 +89,6 @@ function UpdateBook() {
                 <Grid item xs={2} mb={5}>
 
                     <TextField
-                        required
                         id="updateBookAuthor"
                         label="Author"
                         onChange={(e) => {
@@ -100,9 +98,7 @@ function UpdateBook() {
                 </Grid>
 
                 <Grid item xs={2} mb={5}>
-
                     <TextField
-                        required
                         id="updateBookPublicationYear"
                         label="Publication Year"
                         onChange={(e) => {
@@ -112,9 +108,7 @@ function UpdateBook() {
                 </Grid>
 
                 <Grid item xs={2} mb={5}>
-
                     <TextField
-                        required
                         id="updateBookISBN"
                         label="ISBN"
                         onChange={(e) => {
