@@ -73,3 +73,7 @@ C:\Users\User\MyRepos\bookstore-management-system\user-service\user-service\obj\
 C:\Users\User\MyRepos\bookstore-management-system\user-service\user-service\obj\Debug\net6.0\user-service.pdb
 C:\Users\User\MyRepos\bookstore-management-system\user-service\user-service\obj\Debug\net6.0\user-service.genruntimeconfig.cache
 C:\Users\User\MyRepos\bookstore-management-system\user-service\user-service\obj\Debug\net6.0\ref\user-service.dll
+C:\Users\User\MyRepos\bookstore-management-system\user-service\user-service\bin\Debug\net6.0\NLog.dll
+C:\Users\User\MyRepos\bookstore-management-system\user-service\user-service\bin\Debug\net6.0\NLog.Extensions.Logging.dll
+C:\Users\User\MyRepos\bookstore-management-system\user-service\user-service\bin\Debug\net6.0\NLog.Web.AspNetCore.dll
+C:\Users\User\MyRepos\bookstore-management-system\user-service\user-service\bin\Debug\net6.0\nlog.config
