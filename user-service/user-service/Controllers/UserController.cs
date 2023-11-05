@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using user_service.Services;
 
 namespace user_service.Controllers
 {
@@ -8,42 +9,26 @@ namespace user_service.Controllers
     {
 
         private readonly ILogger<UserController> _logger;
-        private readonly UserContext _userContext = new UserContext();
+        private readonly IUserService _userService;
 
-        public UserController(ILogger<UserController> logger)
+        public UserController(ILogger<UserController> logger, IUserService userService)
         {
             _logger = logger;
+            _userService = userService;
         }
 
         [HttpPost]
         [Route("")]
         public void RegisterUser(User user)
         {
-
-            var userExists = _userContext.Users
-                .Where(u => u.Email.Equals(user.Email) || u.Username.Equals(user.Username)).Count() > 0;
-
-            if (userExists)
-            {
-                return;
-            }
-
-            _userContext.Add(new UserEntity
-            {
-                Username = user.Username,
-                Email = user.Email,
-                Password = user.Password
-            });
-            _userContext.SaveChanges();
+            _userService.RegisterUser(user);
         }
 
         [HttpGet]
         [Route("")]
-        public IEnumerable<UserEntity> Login(string emailOrUsername, string password)
+        public UserEntity GetUser(string emailOrUsername, string password)
         {
-            var user = _userContext.Users
-                .Where(u => u.Email.Equals(emailOrUsername) || u.Username.Equals(emailOrUsername));
-            return user;
+            return _userService.GetUser(emailOrUsername, password);
         }
     }
 }

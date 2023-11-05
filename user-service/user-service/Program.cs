@@ -1,5 +1,6 @@
 using NLog;
 using NLog.Web;
+using user_service.Services;
 
 // Early init of NLog to allow startup and exception logging, before host is built
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -24,6 +25,7 @@ try
 
     // Add services to the container.
 
+    builder.Services.AddScoped<IUserService, UserService>();
     builder.Services.AddControllers();
 
     // NLog: Setup NLog for Dependency injection
