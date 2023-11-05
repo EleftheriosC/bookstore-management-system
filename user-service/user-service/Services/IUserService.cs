@@ -4,6 +4,8 @@
     {
         public void RegisterUser(User user);
 
-        public UserEntity GetUser(string emailOrUsername, string password);
+        public UserEntity GetUser(string emailOrUsername);
+
+        public LoginResponse Login(string emailOrUsername, string password);
     }
 }

@@ -18,17 +18,26 @@ namespace user_service.Controllers
         }
 
         [HttpPost]
-        [Route("")]
+        [Route("/register")]
         public void RegisterUser(User user)
         {
             _userService.RegisterUser(user);
         }
 
+        [HttpPost]
+        [Route("/login")]
+        public LoginResponse LoginUser(string emailOrUsername, string password)
+        {
+           var response = _userService.Login(emailOrUsername, password);
+
+            return response;
+        }
+
         [HttpGet]
         [Route("")]
-        public UserEntity GetUser(string emailOrUsername, string password)
+        public UserEntity GetUser(string emailOrUsername)
         {
-            return _userService.GetUser(emailOrUsername, password);
+            return _userService.GetUser(emailOrUsername);
         }
     }
 }

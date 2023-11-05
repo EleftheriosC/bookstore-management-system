@@ -36,11 +36,27 @@ namespace user_service.Services
             _userContext.SaveChanges();
         }
 
-        public UserEntity GetUser(string emailOrUsername, string password)
+        public UserEntity GetUser(string emailOrUsername)
         {
             var user = _userContext.Users
                 .Where(u => u.Email.Equals(emailOrUsername) || u.Username.Equals(emailOrUsername)).First();
             return user;
         }
+
+        public LoginResponse Login(string emailOrUsername, string password)
+        {
+            var user = _userContext.Users
+                .Where(u => u.Email.Equals(emailOrUsername) || u.Username.Equals(emailOrUsername)).First();
+
+            byte[] salt = Convert.FromBase64String(user.Salt);
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+
+            byte[] hash = pbkdf2.GetBytes(32);
+            string generatedHash = Convert.ToBase64String(hash);
+
+            return new LoginResponse(generatedHash == user.PasswordHash);
+
+        }
+
     }
 }
