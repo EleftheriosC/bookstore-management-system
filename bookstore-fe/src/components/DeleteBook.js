@@ -36,10 +36,6 @@ function DeleteBook(props) {
                         type="submit"
                         id="deleteBookBtn"
                         onClick={() => removeBook(bookId)}
-                        // disabled={loading}
-                        // onSubmit={ (e) => {
-                        //     addBook(title,author,publicationYear,isbn)
-                        // }}
                     >
                         Delete Book
                     </button>

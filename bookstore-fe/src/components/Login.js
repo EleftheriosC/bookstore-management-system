@@ -1,5 +1,4 @@
-import {Box, Button, Grid, Input, TextField, Typography} from "@mui/material";
-import {red} from "@mui/material/colors";
+import {Grid, TextField, Typography} from "@mui/material";
 import {Link, useNavigate} from 'react-router-dom';
 import {useState} from "react";
 import api from "../api/bookstore";
@@ -27,9 +26,6 @@ function Login() {
                 let response = await api.post('/Authentication/login', existingUser);
                 setToken(response.data);
                 const tokenData= response.data;
-                console.log("token", token);
-                console.log("response data", response.data);
-
                 navigate('/bookstore', {state: {tokenData} });
             } catch (err) {
                 console.log(`Error: &{err.message}`);
@@ -74,17 +70,12 @@ function Login() {
 
 
               <Grid item xs={12} mb={5}>
-                  {/*<Link to={"/bookstore"}>Sign In</Link>*/}
                   <button
                       type="submit"
                       id="loginBtn"
                       onClick={() => handleLogin(usernameOrEmail, password)}
-                      // disabled={loading}
-                      // onSubmit={ (e) => {
-                      //     addBook(title,author,publicationYear,isbn)
-                      // }}
                   >
-                      Register
+                      Login
                   </button>
               </Grid>
 

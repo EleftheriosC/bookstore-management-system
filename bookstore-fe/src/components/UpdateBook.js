@@ -14,24 +14,19 @@ function UpdateBook(props) {
     const tokenReceived = props.token;
 
     const updateBook = async (bookId, title, author, publicationYear, isbn) => {
-        console.log('Update Book Clicked');
-
         const validTitle = title !== null && title.length > 0;
         const validAuthor = author !== null && author.length > 0;
         const validPublicationYear = publicationYear !== null && publicationYear.length >0;
         const validISBN = isbn !== null && isbn.length >0;
 
-        console.log(publicationYear)
             const updatedBook = {
                 title: validTitle ? title : "",
                 author: validAuthor ? author : "",
                 publicationYear: validPublicationYear ? parseInt(publicationYear) : -1,
                 isbn: validISBN ? isbn : ""
             };
-            console.log('Add Book Conditions met');
 
             try {
-                console.log('Attempting crate book call');
                 let response = await api.put(`/Book/${bookId}`, updatedBook,
                     {
                         headers: {

@@ -27,6 +27,7 @@ namespace user_service.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         {
+            _logger.LogInformation("Handling a Login attemp");
             var response = await _authenticationService.Login(loginRequest);
 
             return Ok(response);
@@ -39,6 +40,8 @@ namespace user_service.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Register([FromBody] RegisterRequest registerRequest)
         {
+            _logger.LogInformation("Handling a Register request");
+
             var response = await _authenticationService.Register(registerRequest);
 
             return Ok(response);

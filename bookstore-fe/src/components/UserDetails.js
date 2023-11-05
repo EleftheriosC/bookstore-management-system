@@ -1,7 +1,6 @@
-import {Box, Button, Grid, Input, TextField, Typography} from "@mui/material";
-import {red} from "@mui/material/colors";
+import {Grid, TextField, Typography} from "@mui/material";
 import {Link, useNavigate} from 'react-router-dom';
-import {useEffect, useState} from "react";
+import { useState} from "react";
 import api from "../api/bookstore";
 
 function UserDetails() {
@@ -10,10 +9,6 @@ function UserDetails() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
-    // function handleClick(event){
-    //     navigate('/bookstore');
-    // }
 
     const registerUser = async (username, email, password) => {
 
@@ -33,7 +28,6 @@ function UserDetails() {
 
             try {
                 let response = await api.post('/Authentication/register', newUser);
-                console.log("response", response.data);
                 navigate('/');
                 return response;
             } catch (err) {
@@ -87,15 +81,17 @@ function UserDetails() {
                     />
               </Grid>
 
+              <Grid item xs={12} >
+                  <Typography variant={"subtitle2"} color={'black'} mb={5}>
+                      Your password should contain at least 1 symbol, 1 capital letter, a small letter and a numeral
+                  </Typography>
+              </Grid>
+
               <Grid item xs={12} mb={5}>
                   <button
                       type="submit"
                       id="registerUserBtn"
                       onClick={() => registerUser(username, email, password)}
-                      // disabled={loading}
-                      // onSubmit={ (e) => {
-                      //     addBook(title,author,publicationYear,isbn)
-                      // }}
                   >
                       Register
                   </button>

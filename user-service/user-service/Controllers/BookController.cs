@@ -23,7 +23,7 @@ namespace user_service.Controllers
         [Route("")]
         public void AddBook(Book book)
         {
-            _bookService.CreateBookEntry(book);
+            var response =_bookService.CreateBookEntry(book);
         }
 
         

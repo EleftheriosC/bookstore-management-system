@@ -48,9 +48,7 @@ function BookTable(props) {
 
 
     const findBook = async (title, author) => {
-        console.log('Find Book Clicked');
             try {
-                console.log('Attempting to search books');
                 const searchParams = {};
                 if (title){
                     searchParams.title = title

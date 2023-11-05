@@ -4,16 +4,16 @@
     {
         private readonly BookDbContext _bookContext = new();
 
-        public void CreateBookEntry(Book book)
+        public async Task CreateBookEntry(Book book)
         {
-            _bookContext.Add(new BookEntity
+            await _bookContext.AddAsync(new BookEntity
             {
                 Title = book.Title,
                 Author = book.Author,
                 PublicationYear = book.PublicationYear,
                 ISBN = book.ISBN
             });
-            _bookContext.SaveChanges();
+            await _bookContext.SaveChangesAsync();
         }
 
         public IEnumerable<BookEntity> GetAllBooks()
@@ -47,7 +47,7 @@
             return books;
         }
 
-        public void UpdateBook(int bookId, Book updatedBook)
+        public async Task UpdateBook(int bookId, Book updatedBook)
         {
             var book = _bookContext.Books.Find(bookId);
             if (book is not null)
@@ -56,17 +56,17 @@
                 book.Author = updatedBook.Author == "" ? book.Author : updatedBook.Author;
                 book.PublicationYear = (int)(updatedBook.PublicationYear > 0 ? updatedBook.PublicationYear : book.PublicationYear);
                 book.ISBN = updatedBook.ISBN == "" ? book.ISBN : updatedBook.ISBN;
-                _bookContext.SaveChanges();
+                await _bookContext.SaveChangesAsync();
             }
         }
 
-        public void DeleteBook(int bookId)
+        public async Task DeleteBook(int bookId)
         {
             var book = _bookContext.Books.Find(bookId);
             if (book is not null)
             {
                 _bookContext.Remove(book);
-                _bookContext.SaveChanges();
+                await _bookContext.SaveChangesAsync();
             }
         }
 
