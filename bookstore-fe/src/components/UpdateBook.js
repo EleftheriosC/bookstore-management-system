@@ -3,48 +3,49 @@ import {useEffect, useState} from "react";
 import api from "../api/bookstore";
 import {useNavigate} from "react-router-dom";
 
-function UpdateBook() {
+function UpdateBook(props) {
 
     const [loading, setLoading] = useState(false)
     const [bookId, setBookId] = useState("");
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
-    const [publicationYear, setPublicationYear] = useState(0);
+    const [publicationYear, setPublicationYear] = useState(-1);
     const [isbn, setIsbn] = useState("");
     const navigate = useNavigate();
+    const tokenReceived = props.token;
 
     const updateBook = async (bookId, title, author, publicationYear, isbn) => {
         console.log('Update Book Clicked');
 
-        const validTitle = title !== null && title.length >0;
-        const validAuthor = author !== null && author.length >0;
+        const validTitle = title !== null && title.length > 0;
+        const validAuthor = author !== null && author.length > 0;
         const validPublicationYear = publicationYear !== null && publicationYear.length >0;
-        const validISBN =isbn !== null  && isbn.length >0;
+        const validISBN = isbn !== null && isbn.length >0;
 
         console.log(publicationYear)
-        if ((validTitle)
-            || (validAuthor)
-            || (validPublicationYear)
-            || (validISBN)
-            && (bookId !== null && bookId.length >0))
-        {
             const updatedBook = {
-                title: validTitle ? title : null,
-                author: validAuthor ? author : null,
+                title: validTitle ? title : "",
+                author: validAuthor ? author : "",
                 publicationYear: validPublicationYear ? parseInt(publicationYear) : -1,
-                isbn: validISBN ? isbn : null
+                isbn: validISBN ? isbn : ""
             };
             console.log('Add Book Conditions met');
 
             try {
                 console.log('Attempting crate book call');
-                let response = await api.put(`/Book/${bookId}`, updatedBook);
+                let response = await api.put(`/Book/${bookId}`, updatedBook,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${tokenReceived}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
                 navigate(0);
                 return response;
             } catch (err) {
                 console.log(`Error: &{err.message}`);
             }
-        }
+
     }
 
     return (

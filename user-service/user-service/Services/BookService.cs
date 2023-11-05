@@ -52,10 +52,10 @@
             var book = _bookContext.Books.Find(bookId);
             if (book is not null)
             {
-                book.Title = updatedBook.Title is not null ? updatedBook.Title : book.Title;
-                book.Author = updatedBook.Author is not null ? updatedBook.Author : book.Author;
+                book.Title = updatedBook.Title == "" ? book.Title : updatedBook.Title;
+                book.Author = updatedBook.Author == "" ? book.Author : updatedBook.Author;
                 book.PublicationYear = (int)(updatedBook.PublicationYear > 0 ? updatedBook.PublicationYear : book.PublicationYear);
-                book.ISBN = updatedBook.ISBN is not null ? updatedBook.ISBN : book.ISBN;
+                book.ISBN = updatedBook.ISBN == "" ? book.ISBN : updatedBook.ISBN;
                 _bookContext.SaveChanges();
             }
         }

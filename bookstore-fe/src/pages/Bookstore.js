@@ -22,11 +22,11 @@ function Bookstore() {
 
             <AddBook token={token} />
 
-            <UpdateBook  token={token}/>
+            <UpdateBook token={token}/>
 
-            <DeleteBook  token={token}/>
+            <DeleteBook token={token}/>
 
-            <BookTable  token={token}/>
+            <BookTable token={token}/>
 
             <Grid item xs={12} mt={5}>
                 <Link to={"/"}>Sign Out</Link>
