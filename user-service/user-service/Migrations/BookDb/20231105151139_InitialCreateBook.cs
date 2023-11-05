@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace book_service.Migrations
+namespace user_service.Migrations.BookDb
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialCreateBook : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

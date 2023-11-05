@@ -77,3 +77,10 @@ C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\
 C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\Debug\net6.0\NLog.Extensions.Logging.dll
 C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\Debug\net6.0\NLog.Web.AspNetCore.dll
 C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\Debug\net6.0\nlog.config
+C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\User\MyRepos\bookstore-management-system\book-service\book-service\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

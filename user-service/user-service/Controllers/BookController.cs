@@ -1,8 +1,8 @@
-using book_service.Services;
+using user_service.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace book_service.Controllers
+namespace user_service.Controllers
 {
     [ApiController]
     [Authorize]
