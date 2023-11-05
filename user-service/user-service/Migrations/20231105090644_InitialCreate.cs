@@ -18,7 +18,8 @@ namespace user_service.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Username = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
-                    Password = table.Column<string>(type: "TEXT", nullable: false)
+                    PasswordHash = table.Column<string>(type: "TEXT", nullable: false),
+                    Salt = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

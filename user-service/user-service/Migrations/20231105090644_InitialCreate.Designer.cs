@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace user_service.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20231102214724_InitialCreate")]
+    [Migration("20231105090644_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -28,7 +28,11 @@ namespace user_service.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Salt")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

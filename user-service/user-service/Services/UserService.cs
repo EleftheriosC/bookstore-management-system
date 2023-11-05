@@ -1,4 +1,6 @@
-﻿namespace user_service.Services
+﻿using System.Security.Cryptography;
+
+namespace user_service.Services
 {
     public class UserService : IUserService
     {
@@ -14,12 +16,22 @@
                 return;
             }
 
+            byte[] salt = new byte[16];
+            RandomNumberGenerator.Create().GetBytes(salt);
+
+            var pbkdf2 = new Rfc2898DeriveBytes(user.Password, salt, 10000);
+
+            byte[] hash = pbkdf2.GetBytes(32);
+
+            var hashString = Convert.ToBase64String(hash);
+            var saltString = Convert.ToBase64String(salt);
 
             _userContext.Add(new UserEntity
             {
                 Username = user.Username,
                 Email = user.Email,
-                Password = user.Password
+                PasswordHash = hashString,
+                Salt = saltString
             });
             _userContext.SaveChanges();
         }
