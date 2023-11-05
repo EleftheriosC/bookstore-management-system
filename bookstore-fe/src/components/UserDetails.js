@@ -2,7 +2,7 @@ import {Box, Button, Grid, Input, TextField, Typography} from "@mui/material";
 import {red} from "@mui/material/colors";
 import {Link, useNavigate} from 'react-router-dom';
 import {useEffect, useState} from "react";
-import api from "../api/users";
+import api from "../api/bookstore";
 
 function UserDetails() {
 
@@ -32,7 +32,8 @@ function UserDetails() {
             };
 
             try {
-                let response = await api.post('/User', newUser);
+                let response = await api.post('/Authentication/register', newUser);
+                console.log("response", response.data);
                 navigate('/');
                 return response;
             } catch (err) {

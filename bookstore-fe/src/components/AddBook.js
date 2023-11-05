@@ -1,9 +1,9 @@
 import {Button, Grid, TextField, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
-import api from "../api/books";
+import api from "../api/bookstore";
 import {useNavigate} from "react-router-dom";
 
-function AddBook() {
+function AddBook( props ) {
 
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false)
@@ -12,7 +12,7 @@ function AddBook() {
     const [publicationYear, setPublicationYear] = useState(0);
     const [isbn, setIsbn] = useState("");
     const navigate = useNavigate();
-
+    const tokenReceived = props.token;
     const createBook = async (title, author, publicationYear, isbn) => {
 
         const validTitle = title !== null && title.length >0;
@@ -33,7 +33,13 @@ function AddBook() {
             };
 
             try {
-                let response = await api.post('/Book', newBook);
+                let response = await api.post('/Book', newBook,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${tokenReceived}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
                 navigate(0);
                 return response;
             } catch (err) {

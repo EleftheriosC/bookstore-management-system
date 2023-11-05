@@ -1,16 +1,23 @@
 import {Grid, Typography} from "@mui/material";
 import {DataGrid} from "@mui/x-data-grid";
 import {useEffect, useState} from "react";
-import api from "../api/books";
+import api from "../api/bookstore";
 
-function BookTable() {
+function BookTable(props) {
 
     const [books, setBooks] = useState([]);
+    const tokenReceived = props.token;
 
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await api.get('/Book');
+                const response = await api.get('/Book',
+                    {
+                        headers: {
+                            Authorization: `Bearer ${tokenReceived}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
                 if (response && response.data){
                     setBooks(response.data);
                 }

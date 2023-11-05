@@ -18,16 +18,24 @@
 
         public IEnumerable<BookEntity> GetAllBooks()
         {
-            return (IEnumerable<BookEntity>)_bookContext.Books.OrderBy(b => b.BookEntityId);
+            return _bookContext.Books.OrderBy(b => b.BookEntityId);
         }
 
         public IEnumerable<BookEntity> GetBooksByTitleOrAuthor(string? title, string? author)
         {
-            //Make case invariant
-            //Fix slection issue
-            var books = _bookContext.Books
-                .Where(b => b.Title.ToLower().Contains(title.ToLower()))
-                .Where(b => b.Author.ToLower().Contains(author.ToLower()));
+            var query = _bookContext.Books.AsQueryable();
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                query = query.Where(b => b.Title.ToLower().Contains(title.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(author))
+            {
+                query = query.Where(b => b.Author.ToLower().Contains(author.ToLower()));
+            }
+
+            var books = query.ToList();
 
             return books;
         }

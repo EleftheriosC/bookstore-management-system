@@ -1,20 +1,27 @@
 import {Button, Grid, TextField, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
-import api from "../api/books";
+import api from "../api/bookstore";
 import {useNavigate} from 'react-router-dom';
 
-function DeleteBook() {
+function DeleteBook(props) {
 
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false)
     const [bookId, setBookId] = useState("");
     const navigate = useNavigate();
+    const tokenReceived = props.token;
 
     const removeBook = async (bookId) => {
         if (bookId !== null && bookId.length >0)
         {
             try {
-               let response = await api.delete(`/Book/${bookId}`);
+               let response = await api.delete(`/Book/${bookId}`,
+                   {
+                       headers: {
+                           Authorization: `Bearer ${tokenReceived}`,
+                           'Content-Type': 'application/json'
+                       }
+                   });
                 setBookId("");
                 navigate(0);
             } catch (err) {
