@@ -1,4 +1,4 @@
-import {Grid, Typography} from "@mui/material";
+import {Grid, TextField, Typography} from "@mui/material";
 import {DataGrid} from "@mui/x-data-grid";
 import {useEffect, useState} from "react";
 import api from "../api/bookstore";
@@ -6,8 +6,10 @@ import api from "../api/bookstore";
 function BookTable(props) {
 
     const [books, setBooks] = useState([]);
+    const [searchTitle, setSearchTitle]= useState("");
+    const [searchAuthor, setSearchAuthor]= useState("");
+    const [searchResponse, setSearchResponse] = useState(null);
     const tokenReceived = props.token;
-
     useEffect(() => {
         const fetchBooks = async () => {
             try {
@@ -44,6 +46,43 @@ function BookTable(props) {
         { field: 'isbn', headerName: 'ISBN', width: 400}
     ];
 
+    // useEffect(() => {
+    //
+    // }, [searchResponse]);
+
+    const findBook = async (title, author) => {
+        console.log('Find Book Clicked');
+        const validTitle = title !== null && title.length >0;
+        const validAuthor = author !== null && author.length >0;
+        if (validTitle || validAuthor)
+        {
+            try {
+                console.log('Attempting to search books');
+                const searchParams = {};
+                if (title){
+                    searchParams.title = title
+                }
+
+                if (author) {
+                    searchParams.author = author
+                }
+                    let response = await api.get(`/Book/GetBooksByTitleOrAuthor`,
+                    {
+                        params: searchParams,
+                        headers: {
+                            Authorization: `Bearer ${tokenReceived}`,
+                            'Content-Type': 'application/json'
+                        }
+                    }, searchParams);
+                if (response && response.data){
+                    setBooks(response.data);
+                }
+            } catch (err) {
+                console.log(`Error: &{err.message}`);
+            }
+        }
+    }
+
     return (
         <>
 
@@ -52,6 +91,42 @@ function BookTable(props) {
                     Book List
                 </Typography>
             </Grid>
+
+            <Grid container>
+                <Grid item xs={2} mb={5}>
+                    <button
+                        type="submit"
+                        id="searchBookBtn"
+                        onClick={() => findBook(searchTitle, searchAuthor)}
+                    >
+                        Search for Book
+                    </button>
+                </Grid>
+
+
+                <Grid item xs={2} mb={5}>
+                    <TextField
+                        id="bookTitleSearch"
+                        label="Search By Title"
+                        onChange={(e) => {
+                            setSearchTitle(e.target.value)
+                        }}
+                        value={searchTitle}
+                    />
+                </Grid>
+
+                <Grid item xs={2} mb={5}>
+                    <TextField
+                        id="bookAuthorSearch"
+                        label="Search By Author"
+                        onChange={(e) => {
+                            setSearchAuthor(e.target.value)
+                        }}
+                        value={searchAuthor}
+                    />
+                </Grid>
+
+
 
             <Grid container item xs={12}>
                 <DataGrid
@@ -71,6 +146,7 @@ function BookTable(props) {
                     disableRowSelectionOnClick
                 />
 
+            </Grid>
             </Grid>
 
         </>
