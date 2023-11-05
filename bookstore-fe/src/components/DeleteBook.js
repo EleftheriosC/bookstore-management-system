@@ -1,12 +1,10 @@
-import {Button, Grid, TextField, Typography} from "@mui/material";
-import {useEffect, useState} from "react";
+import { Grid, TextField} from "@mui/material";
+import { useState} from "react";
 import api from "../api/bookstore";
 import {useNavigate} from 'react-router-dom';
 
 function DeleteBook(props) {
 
-    const [books, setBooks] = useState([]);
-    const [loading, setLoading] = useState(false)
     const [bookId, setBookId] = useState("");
     const navigate = useNavigate();
     const tokenReceived = props.token;

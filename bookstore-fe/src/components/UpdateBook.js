@@ -1,11 +1,10 @@
-import {Button, Grid, TextField, Typography} from "@mui/material";
-import {useEffect, useState} from "react";
+import { Grid, TextField} from "@mui/material";
+import {useState} from "react";
 import api from "../api/bookstore";
 import {useNavigate} from "react-router-dom";
 
 function UpdateBook(props) {
 
-    const [loading, setLoading] = useState(false)
     const [bookId, setBookId] = useState("");
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
@@ -56,10 +55,6 @@ function UpdateBook(props) {
                         type="submit"
                         id="updateBookBtn"
                         onClick={() => updateBook(bookId,title,author,publicationYear,isbn)}
-                        // disabled={loading}
-                        // onSubmit={ (e) => {
-                        //     addBook(title,author,publicationYear,isbn)
-                        // }}
                     >
                         Update Book
                     </button>

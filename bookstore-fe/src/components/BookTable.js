@@ -8,8 +8,8 @@ function BookTable(props) {
     const [books, setBooks] = useState([]);
     const [searchTitle, setSearchTitle]= useState("");
     const [searchAuthor, setSearchAuthor]= useState("");
-    const [searchResponse, setSearchResponse] = useState(null);
     const tokenReceived = props.token;
+
     useEffect(() => {
         const fetchBooks = async () => {
             try {
@@ -36,7 +36,7 @@ function BookTable(props) {
         }
 
         fetchBooks();
-    }, []);
+    }, [tokenReceived]);
 
     const columns = [
         { field: 'bookEntityId', headerName: 'ID', width: 90},
@@ -46,16 +46,9 @@ function BookTable(props) {
         { field: 'isbn', headerName: 'ISBN', width: 400}
     ];
 
-    // useEffect(() => {
-    //
-    // }, [searchResponse]);
 
     const findBook = async (title, author) => {
         console.log('Find Book Clicked');
-        // const validTitle = title !== null && title.length >0;
-        // const validAuthor = author !== null && author.length >0;
-        // if (validTitle || validAuthor)
-        // {
             try {
                 console.log('Attempting to search books');
                 const searchParams = {};
@@ -80,7 +73,6 @@ function BookTable(props) {
             } catch (err) {
                 console.log(`Error: &{err.message}`);
             }
-        // }
     }
 
     return (
