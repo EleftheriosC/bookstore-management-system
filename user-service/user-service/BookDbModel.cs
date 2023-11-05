@@ -2,17 +2,17 @@
 using System;
 using System.Collections.Generic;
 
-public class UserContext : DbContext
+public class BookDbContext : DbContext
 {
-    public DbSet<UserEntity> Users { get; set; }
+    public DbSet<BookEntity> Books { get; set; }
 
     public string DbPath { get; }
 
-    public UserContext()
+    public BookDbContext()
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
         var path = Environment.GetFolderPath(folder);
-        DbPath = Path.Join(path, "users.db");
+        DbPath = System.IO.Path.Join(path, "books.db");
     }
 
     // The following configures EF to create a Sqlite database file in the
@@ -21,11 +21,12 @@ public class UserContext : DbContext
         => options.UseSqlite($"Data Source={DbPath}");
 }
 
-public class UserEntity
+public class BookEntity
 {
-    public int UserEntityId { get; set; }
-    public string Username { get; set; }
-    public string Email { get; set; }
-    public string PasswordHash { get; set; }
-    public string Salt { get; set; }
+    public int BookEntityId { get; set; }
+    public string Title { get; set; }
+    public string Author { get; set; }
+
+    public int PublicationYear { get; set; }
+    public string ISBN { get; set; }
 }

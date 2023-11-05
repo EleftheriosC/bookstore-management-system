@@ -2,9 +2,8 @@ import '../App.css';
 import Login from "../components/Login";
 import {Box, Button, Grid, TextField, Typography} from "@mui/material";
 import Welcome from "../components/Welcome";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import api from '../api/books';
 import {DataGrid} from "@mui/x-data-grid";
 import BookTable from "../components/BookTable";
 import AddBook from "../components/AddBook";
@@ -12,21 +11,22 @@ import DeleteBook from "../components/DeleteBook";
 import UpdateBook from "../components/UpdateBook";
 
 function Bookstore() {
+    const location = useLocation();
+    const token = location.state.tokenData !== null ? location.state.tokenData : "" ;
   return (
     <main className={"App"}>
         <Grid container>
-
             <Grid item xs={12} mt={10} mb={10}>
                 <Typography variant={"h2"}>Book Management System</Typography>
             </Grid>
 
-            <AddBook/>
+            <AddBook token={token} />
 
-            <UpdateBook/>
+            <UpdateBook  token={token}/>
 
-            <DeleteBook/>
+            <DeleteBook  token={token}/>
 
-            <BookTable/>
+            <BookTable  token={token}/>
 
             <Grid item xs={12} mt={5}>
                 <Link to={"/"}>Sign Out</Link>
