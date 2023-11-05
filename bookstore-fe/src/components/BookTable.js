@@ -52,10 +52,10 @@ function BookTable(props) {
 
     const findBook = async (title, author) => {
         console.log('Find Book Clicked');
-        const validTitle = title !== null && title.length >0;
-        const validAuthor = author !== null && author.length >0;
-        if (validTitle || validAuthor)
-        {
+        // const validTitle = title !== null && title.length >0;
+        // const validAuthor = author !== null && author.length >0;
+        // if (validTitle || validAuthor)
+        // {
             try {
                 console.log('Attempting to search books');
                 const searchParams = {};
@@ -80,7 +80,7 @@ function BookTable(props) {
             } catch (err) {
                 console.log(`Error: &{err.message}`);
             }
-        }
+        // }
     }
 
     return (
@@ -93,6 +93,7 @@ function BookTable(props) {
             </Grid>
 
             <Grid container>
+                <Grid container m={2} justifyContent={'center'}>
                 <Grid item xs={2} mb={5}>
                     <button
                         type="submit"
@@ -126,7 +127,7 @@ function BookTable(props) {
                     />
                 </Grid>
 
-
+                </Grid>
 
             <Grid container item xs={12}>
                 <DataGrid

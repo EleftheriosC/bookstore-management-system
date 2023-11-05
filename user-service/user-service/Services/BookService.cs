@@ -24,7 +24,8 @@
         public IEnumerable<BookEntity> GetBooksByTitleOrAuthor(string? title, string? author)
         {
             var query = _bookContext.Books.AsQueryable();
-
+            var books = new List<BookEntity>();
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(author)) {
             if (!string.IsNullOrEmpty(title))
             {
                 query = query.Where(b => b.Title.ToLower().Contains(title.ToLower()));
@@ -35,7 +36,13 @@
                 query = query.Where(b => b.Author.ToLower().Contains(author.ToLower()));
             }
 
-            var books = query.ToList();
+            books = query.ToList();
+            
+            } else
+            {
+               books = _bookContext.Books.OrderBy(b => b.BookEntityId).ToList();
+            }
+
 
             return books;
         }
