@@ -41,15 +41,15 @@
 
             if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(author))
             {
-                query = query.Where(b => b.Title.ToLower() == title.ToLower() && b.Author.ToLower() == author.ToLower());
+                query = query.Where(b => b.Title.ToLower().Contains(title.ToLower()) && b.Author.ToLower().Contains(author.ToLower()));
             }
             else if (!string.IsNullOrEmpty(title))
             {
-                query = query.Where(b => b.Title.ToLower() == title.ToLower());
+                query = query.Where(b => b.Title.ToLower().Contains(title.ToLower()));
             }
             else if (!string.IsNullOrEmpty(author))
             {
-                query = query.Where(b => b.Author.ToLower() == author.ToLower());
+                query = query.Where(b => b.Author.ToLower().Contains(author.ToLower()));
             }
             else
             {
