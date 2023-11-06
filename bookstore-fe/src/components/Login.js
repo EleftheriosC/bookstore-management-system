@@ -17,7 +17,6 @@ function Login() {
         const validUsername = username !== null && username.length >0;
         const validPassword = password !== null && password.length >0;
         setError(false);
-
         if (validUsername && validPassword) {
             setLoading(true);
             const existingUser = {
