@@ -8,15 +8,18 @@ function Login() {
     const [usernameOrEmail, setUsernameOrEmail] = useState("");
     const [password, setPassword] = useState("");
     const [token, setToken] = useState(null);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
     const handleLogin = async (username, password) => {
 
         const validUsername = username !== null && username.length >0;
         const validPassword = password !== null && password.length >0;
+        setError(false);
 
         if (validUsername && validPassword) {
-
+            setLoading(true);
             const existingUser = {
                 username: username,
                 password: password
@@ -24,10 +27,13 @@ function Login() {
 
             try {
                 let response = await api.post('/Authentication/login', existingUser);
+                setLoading(false);
                 setToken(response.data);
                 const tokenData= response.data;
                 navigate('/bookstore', {state: {tokenData} });
             } catch (err) {
+                setLoading(false);
+                setError(true);
                 console.log(`Error: &{err.message}`);
             }
         }
@@ -68,11 +74,19 @@ function Login() {
                   />
               </Grid>
 
+              {error &&
+              <Grid item xs={12}>
+                  <Typography variant={"subtitle2"} color={'red'}>
+                      Wrong username or password!
+                  </Typography>
+              </Grid>
+              }
 
               <Grid item xs={12} mb={5}>
                   <button
                       type="submit"
                       id="loginBtn"
+                      disabled={loading}
                       onClick={() => handleLogin(usernameOrEmail, password)}
                   >
                       Login

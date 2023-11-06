@@ -9,9 +9,14 @@ function BookTable(props) {
     const [searchTitle, setSearchTitle]= useState("");
     const [searchAuthor, setSearchAuthor]= useState("");
     const tokenReceived = props.token;
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchBooks = async () => {
+            setError(false);
+            setLoading(true);
+
             try {
                 const response = await api.get('/Book',
                     {
@@ -23,6 +28,8 @@ function BookTable(props) {
                 if (response && response.data){
                     setBooks(response.data);
                 }
+                setLoading(false);
+
             } catch (err) {
                 if (err.response) {
                     console.log(err.response.data);
@@ -30,6 +37,8 @@ function BookTable(props) {
                     console.log(err.response.headers);
                 }
                 else {
+                    setLoading(false);
+                    setError(true);
                     console.log(`Error: ${err.message}`)
                 }
             }
@@ -48,7 +57,10 @@ function BookTable(props) {
 
 
     const findBook = async (title, author) => {
-            try {
+        setLoading(true);
+        setError(false);
+
+        try {
                 const searchParams = {};
                 if (title){
                     searchParams.title = title
@@ -68,7 +80,11 @@ function BookTable(props) {
                 if (response && response.data){
                     setBooks(response.data);
                 }
+                setLoading(false);
+
             } catch (err) {
+                setLoading(false);
+                setError(true);
                 console.log(`Error: &{err.message}`);
             }
     }
@@ -82,16 +98,22 @@ function BookTable(props) {
                 </Typography>
             </Grid>
 
-            <Grid container>
-                <Grid container m={2} justifyContent={'center'}>
+            <Grid container alignItems={'center'}>
+                <Grid container m={2} justifyContent={'center'} alignItems={'center'}>
                 <Grid item xs={2} mb={5}>
                     <button
                         type="submit"
                         id="searchBookBtn"
+                        disabled={loading}
                         onClick={() => findBook(searchTitle, searchAuthor)}
                     >
                         Search for Book
                     </button>
+                    {error &&
+                        <Typography variant={"subtitle2"} color={'red'}>
+                            Search failed please try again.
+                        </Typography>
+                    }
                 </Grid>
 
 

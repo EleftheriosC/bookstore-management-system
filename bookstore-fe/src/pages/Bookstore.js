@@ -12,8 +12,10 @@ function Bookstore() {
   return (
     <main className={"App"}>
         <Grid container>
-            <Grid item xs={12} mt={10} mb={10}>
+
+            <Grid item xs={12} mb={4}>
                 <Typography variant={"h2"}>Book Management System</Typography>
+                <Link to={"/"}>Sign Out</Link>
             </Grid>
 
             <AddBook token={token} />
@@ -24,9 +26,6 @@ function Bookstore() {
 
             <BookTable token={token}/>
 
-            <Grid item xs={12} mt={5}>
-                <Link to={"/"}>Sign Out</Link>
-            </Grid>
         </Grid>
     </main>
   );

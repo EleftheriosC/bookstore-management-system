@@ -1,5 +1,4 @@
-import {Box, Button, Grid, Input, TextField, Typography} from "@mui/material";
-import {red} from "@mui/material/colors";
+import { Grid, Typography} from "@mui/material";
 import logo from '../logo.svg';
 
 function RegisterBanner() {

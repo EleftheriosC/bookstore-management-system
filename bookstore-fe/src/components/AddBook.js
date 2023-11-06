@@ -1,4 +1,4 @@
-import {Grid, TextField} from "@mui/material";
+import {Grid, TextField, Typography} from "@mui/material";
 import { useState} from "react";
 import api from "../api/bookstore";
 import {useNavigate} from "react-router-dom";
@@ -11,18 +11,24 @@ function AddBook( props ) {
     const [isbn, setIsbn] = useState("");
     const navigate = useNavigate();
     const tokenReceived = props.token;
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
+
     const createBook = async (title, author, publicationYear, isbn) => {
 
         const validTitle = title !== null && title.length >0;
         const validAuthor = author !== null && author.length >0;
         const validPublicationYear = publicationYear !== null && publicationYear.length >0;
         const validISBN =isbn !== null  && isbn.length >0;
+        setError(false);
 
         if ((validTitle)
             && (validAuthor)
             && (validPublicationYear)
             && (validISBN))
         {
+            setLoading(true);
+
             const newBook = {
                 title: title,
                 author: author,
@@ -38,9 +44,12 @@ function AddBook( props ) {
                             'Content-Type': 'application/json'
                         }
                     });
+                setLoading(false);
                 navigate(0);
                 return response;
             } catch (err) {
+                setLoading(false);
+                setError(true);
                 console.log(`Error: &{err.message}`);
             }
         }
@@ -48,15 +57,21 @@ function AddBook( props ) {
 
     return (
         <>
-            <Grid container>
+            <Grid container alignItems={'center'}>
                 <Grid item xs={2} mb={5}>
                     <button
                         type="submit"
                         id="addBookBtn"
+                        disabled={loading}
                         onClick={() => createBook(title,author,publicationYear,isbn)}
                     >
                         Add Book
                     </button>
+                    {error &&
+                        <Typography variant={"subtitle2"} color={'red'}>
+                            Book addition failed please enter a valid Book details and try again.
+                        </Typography>
+                    }
                 </Grid>
 
 
