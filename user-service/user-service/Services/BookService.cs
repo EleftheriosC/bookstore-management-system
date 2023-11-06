@@ -38,24 +38,23 @@
 
             var query = _bookContext.Books.AsQueryable();
             var books = new List<BookEntity>();
-            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(author)) {
-            if (!string.IsNullOrEmpty(title))
-            {
-                query = query.Where(b => b.Title.ToLower().Contains(title.ToLower()));
-            }
 
-            if (!string.IsNullOrEmpty(author))
+            if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(author))
             {
-                query = query.Where(b => b.Author.ToLower().Contains(author.ToLower()));
+                query = query.Where(b => b.Title.ToLower() == title.ToLower() && b.Author.ToLower() == author.ToLower());
             }
-
-            books = query.ToList();
-            
-            } else
+            else if (!string.IsNullOrEmpty(title))
             {
-               books = _bookContext.Books.OrderBy(b => b.BookEntityId).ToList();
+                query = query.Where(b => b.Title.ToLower() == title.ToLower());
             }
-
+            else if (!string.IsNullOrEmpty(author))
+            {
+                query = query.Where(b => b.Author.ToLower() == author.ToLower());
+            }
+            else
+            {
+                books = _bookContext.Books.OrderBy(b => b.BookEntityId).ToList();
+            }
 
             return books;
         }
