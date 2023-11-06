@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "user-service/1.0.0": {
+      "BookStoreService/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.24",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.24",
@@ -18,7 +18,7 @@
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
-          "user-service.dll": {}
+          "BookStoreService.dll": {}
         }
       },
       "Humanizer.Core/2.14.1": {
@@ -652,7 +652,7 @@
     }
   },
   "libraries": {
-    "user-service/1.0.0": {
+    "BookStoreService/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -10,11 +10,6 @@ namespace BookStoreService.Tests
         public BookServiceTests()
         {
 
-            DbContextOptions<BookDbContext> options = new DbContextOptionsBuilder<BookDbContext>()
-                .UseInMemoryDatabase("BookServiceTests")
-                .Options;
-            _dbContext = new BookDbContext(options);
-
         }
 
         [Fact]

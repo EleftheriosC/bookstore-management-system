@@ -128,18 +128,6 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.InMemory/7.0.13": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.13"
-        },
-        "compile": {
-          "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {}
-        },
-        "runtime": {
-          "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {}
-        }
-      },
       "Microsoft.EntityFrameworkCore.Relational/7.0.13": {
         "type": "package",
         "dependencies": {
@@ -2352,7 +2340,7 @@
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
       },
-      "user-service/1.0.0": {
+      "BookStoreService/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -2364,10 +2352,10 @@
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "compile": {
-          "bin/placeholder/user-service.dll": {}
+          "bin/placeholder/BookStoreService.dll": {}
         },
         "runtime": {
-          "bin/placeholder/user-service.dll": {}
+          "bin/placeholder/BookStoreService.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -2689,20 +2677,6 @@
         "lib/netstandard2.0/_._",
         "microsoft.entityframeworkcore.analyzers.7.0.13.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.InMemory/7.0.13": {
-      "sha512": "HFSMOeNNfCQ16Moy6Rv99/xhVOzW27ND9YcoDJrQ9KocJP8ZONuz5OtTJg9pfKFKblBPj6LWNI496VrAWkECyg==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.inmemory/7.0.13",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll",
-        "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.xml",
-        "microsoft.entityframeworkcore.inmemory.7.0.13.nupkg.sha512",
-        "microsoft.entityframeworkcore.inmemory.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/7.0.13": {
@@ -7804,18 +7778,17 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "user-service/1.0.0": {
+    "BookStoreService/1.0.0": {
       "type": "project",
-      "path": "../user-service/user-service.csproj",
-      "msbuildProject": "../user-service/user-service.csproj"
+      "path": "../user-service/BookStoreService.csproj",
+      "msbuildProject": "../user-service/BookStoreService.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Microsoft.EntityFrameworkCore.InMemory >= 7.0.13",
+      "BookStoreService >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.1.0",
       "coverlet.collector >= 3.1.2",
-      "user-service >= 1.0.0",
       "xunit >= 2.4.1",
       "xunit.runner.visualstudio >= 2.4.3"
     ]
@@ -7852,8 +7825,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\user-service.csproj": {
-              "projectPath": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\user-service.csproj"
+            "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\BookStoreService.csproj": {
+              "projectPath": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\BookStoreService.csproj"
             }
           }
         }
@@ -7868,10 +7841,6 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.InMemory": {
-            "target": "Package",
-            "version": "[7.0.13, )"
-          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[17.1.0, )"

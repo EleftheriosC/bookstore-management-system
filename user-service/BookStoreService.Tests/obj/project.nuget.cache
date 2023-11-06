@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7DjYMzYpPqdMhEsnsdLax3CQ6Mym7Vi7LKzpZjaE01hlCatQtBRcn/snbpwojm8OpLicq5Wb7flyR93TBZVZBA==",
+  "dgSpecHash": "CzlZsNGYWJd1nuPXlr7cDm15ZVPSe1e6/iumHCjn7/0F+68xE2fhrC3+MnZ5/K6i4PDgG4N0fIhtFFgVoFLeOQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\BookStoreService.Tests\\BookStoreService.Tests.csproj",
   "expectedPackageFiles": [
@@ -15,7 +15,6 @@
     "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.13\\microsoft.entityframeworkcore.7.0.13.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.13\\microsoft.entityframeworkcore.abstractions.7.0.13.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.13\\microsoft.entityframeworkcore.analyzers.7.0.13.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\7.0.13\\microsoft.entityframeworkcore.inmemory.7.0.13.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.13\\microsoft.entityframeworkcore.relational.7.0.13.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\7.0.13\\microsoft.entityframeworkcore.sqlite.7.0.13.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\7.0.13\\microsoft.entityframeworkcore.sqlite.core.7.0.13.nupkg.sha512",

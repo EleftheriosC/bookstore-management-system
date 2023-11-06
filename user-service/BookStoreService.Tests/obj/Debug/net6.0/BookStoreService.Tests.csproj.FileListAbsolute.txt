@@ -1,11 +1,8 @@
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\CoverletSourceRootsMapping
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\testhost.dll
-C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\user-service.deps.json
-C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\user-service.runtimeconfig.json
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\nlog.config
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\appsettings.json
-C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\user-service.exe
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\testhost.exe
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
@@ -156,8 +153,6 @@ C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\user-service.dll
-C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\user-service.pdb
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\obj\Debug\net6.0\BookStoreService.Tests.csproj.AssemblyReference.cache
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\obj\Debug\net6.0\BookStoreService.Tests.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\obj\Debug\net6.0\BookStoreService.Tests.AssemblyInfoInputs.cache
@@ -169,3 +164,8 @@ C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\obj\Debug\net6.0\BookStoreService.Tests.pdb
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\obj\Debug\net6.0\BookStoreService.Tests.genruntimeconfig.cache
 C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\obj\Debug\net6.0\ref\BookStoreService.Tests.dll
+C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\BookStoreService.deps.json
+C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\BookStoreService.runtimeconfig.json
+C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\BookStoreService.exe
+C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\BookStoreService.dll
+C:\Users\User\MyRepos\bookstore-management-system\user-service\BookStoreService.Tests\bin\Debug\net6.0\BookStoreService.pdb

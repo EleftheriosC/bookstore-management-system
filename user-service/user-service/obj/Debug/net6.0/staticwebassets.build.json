@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "pP56qYpAgM0bVs/z9euGC4mtO52qE07obP8OE3WT5Vg=",
-  "Source": "user-service",
-  "BasePath": "_content/user-service",
+  "Hash": "0zBibY2qxPSRK/rejxxBoT0y0CyVAI0MBi2Ox905E6k=",
+  "Source": "BookStoreService",
+  "BasePath": "_content/BookStoreService",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

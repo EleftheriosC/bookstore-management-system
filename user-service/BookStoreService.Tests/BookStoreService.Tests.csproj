@@ -19,7 +19,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-	  <ProjectReference Include="..\user-service\user-service.csproj" />
+	  <ProjectReference Include="..\user-service\BookStoreService.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,9 +8,9 @@
     ".NETCoreApp,Version=v6.0": {
       "BookStoreService.Tests/1.0.0": {
         "dependencies": {
+          "BookStoreService": "1.0.0",
           "Microsoft.NET.Test.Sdk": "17.1.0",
           "coverlet.collector": "3.1.2",
-          "user-service": "1.0.0",
           "xunit": "2.4.1",
           "xunit.runner.visualstudio": "2.4.3"
         },
@@ -1637,7 +1637,7 @@
         }
       },
       "xunit.runner.visualstudio/2.4.3": {},
-      "user-service/1.0.0": {
+      "BookStoreService/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.24",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.24",
@@ -1647,7 +1647,7 @@
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
-          "user-service.dll": {}
+          "BookStoreService.dll": {}
         }
       }
     }
@@ -2624,7 +2624,7 @@
       "path": "xunit.runner.visualstudio/2.4.3",
       "hashPath": "xunit.runner.visualstudio.2.4.3.nupkg.sha512"
     },
-    "user-service/1.0.0": {
+    "BookStoreService/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
