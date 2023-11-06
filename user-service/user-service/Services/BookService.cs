@@ -37,7 +37,6 @@
             _logger.LogInformation($"Retrieving books with title {title} and author {author}");
 
             var query = _bookContext.Books.AsQueryable();
-            var books = new List<BookEntity>();
 
             if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(author))
             {
@@ -53,10 +52,10 @@
             }
             else
             {
-                books = _bookContext.Books.OrderBy(b => b.BookEntityId).ToList();
+                return _bookContext.Books.OrderBy(b => b.BookEntityId).ToList();
             }
 
-            return books;
+            return query.ToList();
         }
 
         public async Task UpdateBook(int bookId, Book updatedBook)
