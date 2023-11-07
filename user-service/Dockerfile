@@ -10,6 +10,10 @@ COPY . .
 RUN dotnet publish -c Release -o /user-service BookStoreService.csproj
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+
 WORKDIR /user-service
 COPY --from=build /user-service/ .
+
+EXPOSE 80
+
 ENTRYPOINT ["dotnet", "BookStoreService.dll"]
