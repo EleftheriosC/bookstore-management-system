@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  bookstore-fe:
+    build:
+      context: /bookstore-fe
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    working_dir: /app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - bookstore-service
+
+  bookstore-service:
+    build:
+      context: /user-service/user-service
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+    working_dir: /app
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Developemnt
+
