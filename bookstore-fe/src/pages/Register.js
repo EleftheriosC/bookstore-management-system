@@ -1,6 +1,5 @@
 import '../App.css';
-import Login from "../components/Login";
-import {Box, Grid} from "@mui/material";
+import {Grid} from "@mui/material";
 import RegisterBanner from "../components/RegisterBanner";
 import UserDetails from "../components/UserDetails";
 

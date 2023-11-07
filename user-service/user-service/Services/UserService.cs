@@ -5,6 +5,12 @@ namespace user_service.Services
     public class UserService : IUserService
     {
         private readonly UserContext _userContext = new ();
+        private readonly ILogger<UserService> _logger;
+
+        public UserService(ILogger<UserService> logger)
+        {
+            _logger = logger;
+        }
 
         public void RegisterUser(User user)
         {

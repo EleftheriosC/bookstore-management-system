@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9fP8xS8QsCxXJoEpXugUl+Km19RQunJnDuVXXC5Fpg7/x3P9iK2Hz+5S7tGqyv800Or85Mi/feETUuckx9SoPw==",
+  "dgSpecHash": "+mtMR7PU0xJOy7zY+4QSSRojblqBYIld4l7QMh4z7uy/PB/YA3W+kpojRxhVNKri2hCxBLPyeeasf689LVBTyQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\user-service.csproj",
+  "projectFilePath": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\BookStoreService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.24\\microsoft.aspnetcore.authentication.jwtbearer.6.0.24.nupkg.sha512",

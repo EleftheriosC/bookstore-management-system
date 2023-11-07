@@ -2112,9 +2112,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\user-service.csproj",
-      "projectName": "user-service",
-      "projectPath": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\user-service.csproj",
+      "projectUniqueName": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\BookStoreService.csproj",
+      "projectName": "BookStoreService",
+      "projectPath": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\BookStoreService.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User\\MyRepos\\bookstore-management-system\\user-service\\user-service\\obj\\",
       "projectStyle": "PackageReference",

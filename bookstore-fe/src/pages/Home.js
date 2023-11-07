@@ -1,6 +1,6 @@
 import '../App.css';
 import Login from "../components/Login";
-import {Box, Grid} from "@mui/material";
+import {Grid} from "@mui/material";
 import Welcome from "../components/Welcome";
 
 function Home() {

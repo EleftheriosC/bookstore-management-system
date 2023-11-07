@@ -3,15 +3,15 @@
     public interface IBookService
     {
 
-        public void CreateBookEntry(Book book);
+        public Task CreateBookEntry(Book book);
 
         public IEnumerable<BookEntity> GetAllBooks();
 
         public IEnumerable<BookEntity> GetBooksByTitleOrAuthor(string? title, string? author);
 
-        public void UpdateBook(int bookId, Book updatedBook);
+        public Task UpdateBook(int bookId, Book updatedBook);
 
-        public void DeleteBook(int bookId);
+        public Task DeleteBook(int bookId);
 
     }
 }

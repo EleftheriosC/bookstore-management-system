@@ -1,4 +1,4 @@
-import { Grid, TextField} from "@mui/material";
+import {Grid, TextField, Typography} from "@mui/material";
 import {useState} from "react";
 import api from "../api/bookstore";
 import {useNavigate} from "react-router-dom";
@@ -12,52 +12,63 @@ function UpdateBook(props) {
     const [isbn, setIsbn] = useState("");
     const navigate = useNavigate();
     const tokenReceived = props.token;
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const updateBook = async (bookId, title, author, publicationYear, isbn) => {
-        console.log('Update Book Clicked');
-
         const validTitle = title !== null && title.length > 0;
         const validAuthor = author !== null && author.length > 0;
-        const validPublicationYear = publicationYear !== null && publicationYear.length >0;
-        const validISBN = isbn !== null && isbn.length >0;
+        const validPublicationYear = publicationYear !== null && publicationYear.length > 0;
+        const validISBN = isbn !== null && isbn.length > 0;
+        setError(false);
 
-        console.log(publicationYear)
+        if (bookId !== null && bookId.length > 0) {
+            setLoading(true);
+
             const updatedBook = {
-                title: validTitle ? title : "",
-                author: validAuthor ? author : "",
-                publicationYear: validPublicationYear ? parseInt(publicationYear) : -1,
-                isbn: validISBN ? isbn : ""
-            };
-            console.log('Add Book Conditions met');
+            title: validTitle ? title : "",
+            author: validAuthor ? author : "",
+            publicationYear: validPublicationYear ? parseInt(publicationYear) : -1,
+            isbn: validISBN ? isbn : ""
+        };
 
-            try {
-                console.log('Attempting crate book call');
-                let response = await api.put(`/Book/${bookId}`, updatedBook,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${tokenReceived}`,
-                            'Content-Type': 'application/json'
-                        }
-                    });
-                navigate(0);
-                return response;
-            } catch (err) {
-                console.log(`Error: &{err.message}`);
-            }
+        try {
+            let response = await api.put(`/Book/${bookId}`, updatedBook,
+                {
+                    headers: {
+                        Authorization: `Bearer ${tokenReceived}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+            setLoading(false);
 
+            navigate(0);
+            return response;
+        } catch (err) {
+            setLoading(false);
+            setError(true);
+            console.log(`Error: &{err.message}`);
+        }
+    }
     }
 
     return (
         <>
-            <Grid container>
+            <Grid container alignItems={'center'}>
                 <Grid item xs={2} mb={5}>
                     <button
                         type="submit"
                         id="updateBookBtn"
+                        disabled={loading}
                         onClick={() => updateBook(bookId,title,author,publicationYear,isbn)}
                     >
                         Update Book
                     </button>
+                    {error &&
+                        <Typography variant={"subtitle2"} color={'red'}>
+                            Book update failed please enter a valid Book details and try again.
+                        </Typography>
+                    }
                 </Grid>
 
                 <Grid item xs={2} mb={5}>
