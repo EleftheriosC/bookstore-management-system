@@ -45,13 +45,12 @@ try
 
     builder.Services.AddCors(options =>
     {
-        options.AddPolicy(name: MyAllowSpecificOrigins,
-            policy =>
-            {
-                policy.WithOrigins("http://localhost:3000")
+        options.AddPolicy( "AllowAll",
+            policy => policy
+                .AllowAnyOrigin()
                 .AllowAnyHeader()
-                .AllowAnyMethod();
-            });
+                .AllowAnyMethod()
+            );
     });
 
     builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
@@ -109,7 +108,7 @@ try
 
     app.UseHttpsRedirection();
 
-    app.UseCors(MyAllowSpecificOrigins);
+    app.UseCors("AllowAll");
 
     app.UseAuthentication();
     app.UseAuthorization();
